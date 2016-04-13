@@ -38,7 +38,7 @@ names(full.Labels) <- "Activity"
 #### 4. Appropriately labels the data set with descriptive activity names.
 names(full.Subject) <- "Subject"
 Tidy.Data <- cbind(full.Subject, full.Labels, full.Data)
-write.table(Tidy.Data, "./merged_tidy_data.txt")
+write.table(Tidy.Data, "./merged_data.txt")
 
 
 #### 5. Creates a second, independent tidy data set with the average of each 
@@ -54,4 +54,4 @@ measure_vars <- setdiff(colnames(Tidy.Data), id_vars)
 melted_data <- melt(Tidy.Data, id=id, measure.vars=measure_vars)
 # And we want the average of each varaiable for each activity and each subject
 Tidy.Data.Mean <- dcast(melted_data, Activity + Subject ~ variable, mean)
-write.table(Tidy.Data.Mean, "./merged_tidy_data_mean.txt")
+write.table(Tidy.Data.Mean, "./merged_data_mean.txt")
